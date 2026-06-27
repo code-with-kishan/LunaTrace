@@ -1,0 +1,17 @@
+{
+  "volume": {
+    "low_m3": 37919.84271412105,
+    "expected_m3": 102699.67001812815,
+    "high_m3": 966699.6700181275,
+    "water_yield_low_m3": 34886.25529699137,
+    "water_yield_expected_m3": 94483.6964166779,
+    "water_yield_high_m3": 889363.6964166773
+  },
+  "uncertainty": {
+    "samples": 120,
+    "low_m3": 102544.73577486255,
+    "median_m3": 121166.61633927228,
+    "high_m3": 142188.33069180048,
+    "dominant_uncertainty_source": "demo dielectric and synthetic dual-band proxy assumptions"
+  }
+}

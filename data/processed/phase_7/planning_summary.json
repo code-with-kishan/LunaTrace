@@ -1,0 +1,100 @@
+{
+  "ranked_sites": [
+    {
+      "row": 12,
+      "col": 7,
+      "score": 0.7677553847310202,
+      "site": "LS-1"
+    },
+    {
+      "row": 4,
+      "col": 10,
+      "score": 0.751512265327638,
+      "site": "LS-2"
+    },
+    {
+      "row": 8,
+      "col": 12,
+      "score": 0.7330679403188396,
+      "site": "LS-3"
+    },
+    {
+      "row": 43,
+      "col": 37,
+      "score": 0.714060359176651,
+      "site": "LS-4"
+    },
+    {
+      "row": 37,
+      "col": 43,
+      "score": 0.6930542612111813,
+      "site": "LS-5"
+    },
+    {
+      "row": 39,
+      "col": 35,
+      "score": 0.6912893177998825,
+      "site": "LS-6"
+    }
+  ],
+  "path": {
+    "status": "feasible",
+    "binding_constraint": "none",
+    "path": [
+      [
+        12,
+        7
+      ],
+      [
+        11,
+        6
+      ],
+      [
+        10,
+        5
+      ],
+      [
+        9,
+        5
+      ],
+      [
+        8,
+        5
+      ],
+      [
+        7,
+        5
+      ],
+      [
+        6,
+        5
+      ],
+      [
+        5,
+        5
+      ],
+      [
+        4,
+        4
+      ]
+    ],
+    "total_cost": 29.54819177616034,
+    "steps": 9,
+    "cost_breakdown": {
+      "slope_energy": 5.41,
+      "boulder_risk": 6.23,
+      "darkness_thermal": 2.98,
+      "communication_visibility": 0.98,
+      "wheel_slip_risk": 5.18
+    },
+    "estimated_energy_wh": 127.1,
+    "round_trip_energy_wh": 254.2,
+    "dwell_margin_hr": 6.0,
+    "max_safe_dwell_time_hr": 7.5
+  },
+  "goal": [
+    4,
+    4
+  ],
+  "sensitivity_note": "LS-1 remains top-ranked in 8/8 local weight perturbation tests of +/-0.05."
+}

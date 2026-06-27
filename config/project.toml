@@ -1,0 +1,23 @@
+[project]
+name = "lunatrace"
+pdf_source = "Lunatrace_All_Details.pdf"
+report_root = "reports"
+demo_mode = true
+grid_size = 48
+crater_name = "Faustini F2"
+
+[paths]
+data_root = "data"
+raw_root = "data/raw"
+processed_root = "data/processed"
+outputs_root = "outputs"
+dataset_root = "data/dataset"
+
+[dataset_requirements]
+dfsar_l_band_full_polarimetry = true
+dfsar_s_band_full_polarimetry = true
+dfsar_midas_outputs = true
+ohrc_imagery = true
+shadowcam_imagery = true
+dem = true
+illumination_geometry = true

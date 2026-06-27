@@ -1,0 +1,83 @@
+{
+  "crater": "Faustini F2",
+  "demo_mode": true,
+  "artifacts": [
+    "outputs/artifact_1_forward_model_grid.svg",
+    "outputs/artifact_2_dual_band_depth.svg",
+    "outputs/artifact_3_posterior_vs_baseline.svg",
+    "outputs/artifact_4_hazard_morphology.svg",
+    "outputs/artifact_5_landing_sites.svg",
+    "outputs/artifact_6_traverse_map.svg"
+  ],
+  "final_statement": "Given an estimated ice volume of 102545-142188 m^3 at 81% posterior confidence, dominated by demo dielectric and synthetic dual-band proxy assumptions, and a round-trip traverse cost of 254.2 Wh against a dwell/thermal limit of 7.5 hr, with none binding rather than ice scarcity, a follow-up sampling mission is justified for this MVP scenario.",
+  "top_site": {
+    "row": 12,
+    "col": 7,
+    "score": 0.7677553847310202,
+    "site": "LS-1"
+  },
+  "site_rankings": [
+    {
+      "site": "LS-1",
+      "score": 0.7678,
+      "row": 12,
+      "col": 7
+    },
+    {
+      "site": "LS-2",
+      "score": 0.7515,
+      "row": 4,
+      "col": 10
+    },
+    {
+      "site": "LS-3",
+      "score": 0.7331,
+      "row": 8,
+      "col": 12
+    },
+    {
+      "site": "LS-4",
+      "score": 0.7141,
+      "row": 43,
+      "col": 37
+    }
+  ],
+  "penetration_depths_m": {
+    "l": 2.8906047450304717,
+    "s": 1.4453023725152359
+  },
+  "resource_summary": {
+    "expected_ice_m3": 102700.0,
+    "water_yield_expected_m3": 94484.0,
+    "dominant_uncertainty": "demo dielectric and synthetic dual-band proxy assumptions"
+  },
+  "traverse_summary": {
+    "status": "feasible",
+    "steps": 9,
+    "energy_wh": 127.1,
+    "round_trip_energy_wh": 254.2,
+    "dwell_margin_hr": 6.0,
+    "max_safe_dwell_time_hr": 7.5,
+    "binding_constraint": "none",
+    "cost_breakdown": {
+      "slope_energy": 5.41,
+      "boulder_risk": 6.23,
+      "darkness_thermal": 2.98,
+      "communication_visibility": 0.98,
+      "wheel_slip_risk": 5.18
+    }
+  },
+  "detection_summary": {
+    "entropy_information_value": 0.1632,
+    "entropy_posterior_delta": 0.057,
+    "peak_posterior": 0.8075,
+    "radar_metadata_count": 3
+  },
+  "sensitivity_note": "LS-1 remains top-ranked in 8/8 local weight perturbation tests of +/-0.05.",
+  "story_beats": [
+    "The forward model explains radar behavior before interpreting it.",
+    "Dual-band logic adds a depth argument, not just a presence signal.",
+    "The posterior map exposes where the baseline would over- or under-call ice.",
+    "Landing and traverse decisions stay tied to safety, not only resource proximity."
+  ]
+}

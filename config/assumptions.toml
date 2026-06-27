@@ -1,0 +1,26 @@
+[physical]
+regolith_dielectric_constant = 3.1
+regolith_loss_tangent = 0.015
+assumed_grain_size_mm = 0.18
+dfsar_radiometric_noise_nesz_db = -24.0
+target_analysis_depth_m = 5.0
+roughness_rms_m = 0.12
+
+[rover]
+mass_kg = 27.0
+motor_efficiency = 0.72
+battery_capacity_wh = 650.0
+power_draw_w = 95.0
+minimum_safe_operating_temperature_c = -55.0
+maximum_safe_darkness_dwell_time_hr = 7.5
+max_slope_deg = 25.0
+
+[planning]
+landing_site_scoring_weights = { illumination_safety = 0.30, slope_safety = 0.25, boulder_safety = 0.20, ice_proximity = 0.25 }
+
+[demo]
+notes = "Hackathon MVP assumptions derived for demo-only execution with partial datasets."
+synthetic_s_band_scale = 0.76
+synthetic_ohrc_texture_scale = 0.64
+synthetic_illumination_rim_bias = 0.72
+monte_carlo_samples = 120

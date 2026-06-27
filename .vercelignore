@@ -1,0 +1,14 @@
+# Ignore python dependencies to prevent Vercel from treating this as a Python serverless project
+requirements.txt
+
+# Ignore source code, notebooks, and virtual environments to keep deployment light and secure
+.venv/
+src/
+data/
+config/
+notebooks/
+reports/
+scripts/
+assumptions.md
+DATASET_GUIDE.md
+README.md

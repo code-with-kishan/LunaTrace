@@ -12,19 +12,19 @@ UPLOADED_ASSETS = {
     ),
     "rover_path": (
         Path("/Users/macbook/Downloads/ChatGPT Image Jun 24, 2026 at 05_35_54 PM.png"),
-        "rover-path.png",
+        "rover-path.webp",
     ),
     "moon_hotspot": (
         Path("/Users/macbook/Downloads/ChatGPT Image Jun 24, 2026 at 05_36_00 PM.png"),
-        "moon-hotspot.png",
+        "moon-hotspot.webp",
     ),
     "astronaut": (
         Path("/Users/macbook/Downloads/ChatGPT Image Jun 24, 2026 at 05_35_51 PM.png"),
-        "astronaut.png",
+        "astronaut.webp",
     ),
     "rover_moon": (
         Path("/Users/macbook/Downloads/ChatGPT Image Jun 24, 2026 at 04_18_10 PM.png"),
-        "rover-moon.png",
+        "rover-moon.webp",
     ),
 }
 
@@ -44,17 +44,29 @@ def prepare_uploaded_assets(repo_root: Path) -> dict[str, str]:
     assets_dir.mkdir(parents=True, exist_ok=True)
 
     prepared = {
-        "hero_video": "assets/landing-bg.png",
-        "rover_path": "assets/landing-bg.png",
-        "moon_hotspot": "assets/internal-bg.png",
-        "astronaut": "assets/transition-bg.png",
-        "rover_moon": "assets/landing-bg.png",
+        "hero_video": "assets/hero-lunar.mp4",
+        "rover_path": "assets/rover-path.webp",
+        "moon_hotspot": "assets/moon-hotspot.webp",
+        "astronaut": "assets/astronaut.webp",
+        "rover_moon": "assets/rover-moon.webp",
     }
 
     for key, (source, filename) in UPLOADED_ASSETS.items():
         if source.exists():
             target = assets_dir / filename
-            shutil.copy2(source, target)
+            try:
+                if source.suffix.lower() == ".png":
+                    from PIL import Image
+                    with Image.open(str(source)) as img:
+                        img.save(str(target), "WEBP", quality=80)
+                else:
+                    shutil.copy2(str(source), str(target))
+            except Exception as e:
+                print(f"Error copying/converting asset {key}: {e}")
+                try:
+                    shutil.copy2(str(source), str(target))
+                except Exception:
+                    pass
             prepared[key] = f"assets/{filename}"
 
     return prepared
@@ -64,9 +76,9 @@ def build_fallback_html(repo_root: Path) -> Path:
     manifest_path = repo_root / "outputs/final_manifest.json"
     payload = json.loads(manifest_path.read_text(encoding="utf-8")) if manifest_path.exists() else {}
     visual_assets = prepare_uploaded_assets(repo_root)
-    landing_bg = "assets/landing-bg.png"
-    internal_bg = "assets/internal-bg.png"
-    transition_bg = "assets/transition-bg.png"
+    landing_bg = "assets/landing-bg.webp"
+    internal_bg = "assets/internal-bg.webp"
+    transition_bg = "assets/transition-bg.webp"
 
     story = "".join(f"<li>{item}</li>" for item in payload.get("story_beats", []))
     rankings = "".join(
@@ -156,7 +168,7 @@ def build_fallback_html(repo_root: Path) -> Path:
       inset: 0;
       background:
         linear-gradient(120deg, rgba(2,6,23,.65), rgba(2,6,23,.2)),
-        url("{internal_bg}") center/cover no-repeat fixed;
+        url("{internal_bg}") center/cover no-repeat;
       opacity: .12;
       pointer-events: none;
       z-index: -4;
@@ -525,7 +537,7 @@ def build_fallback_html(repo_root: Path) -> Path:
       inset: 0;
       background:
         linear-gradient(180deg, rgba(2,6,23,.84), rgba(2,6,23,.68)),
-        url("{transition_bg}") center/cover no-repeat fixed;
+        url("{transition_bg}") center/cover no-repeat;
       opacity: .12;
       z-index: -1;
     }}
@@ -1714,6 +1726,11 @@ def build_fallback_html(repo_root: Path) -> Path:
 
     output = repo_root / "outputs/dashboard.html"
     output.write_text(html, encoding="utf-8")
+    
+    # Also write to index.html to support Vercel and other static page routers directly
+    index_output = repo_root / "outputs/index.html"
+    index_output.write_text(html, encoding="utf-8")
+    
     return output
 
 
